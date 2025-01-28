@@ -1,6 +1,14 @@
 import google.generativeai as genai
+from dotenv import load_dotenv
+import os
 
-genai.configure(api_key="AIzaSyDc3Q5b-Im6e5jFon-oHBcSzB2WaCi61j4")
+# Load environment variables from .env file
+load_dotenv()
+
+# Get the API key from the environment
+api_key = os.getenv("GOOGLE_API_KEY")
+
+genai.configure(api_key=api_key)
 
 def get_tag_suggestions(content: str):
     model = genai.GenerativeModel("gemini-1.5-flash")
